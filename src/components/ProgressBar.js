@@ -9,15 +9,25 @@ function ProgressBar({ questionId }) {
 
   let currentActive = 1;
   console.log("currentActive from outside" + currentActive);
+  const onNext = () => {
+    if (questionId > circles.length) {
+      questionId = circles.length;
+    }
 
-  console.log(next);
+    update();
+  };
+
+  //console.log(next);
   // if (next) {
   //   next.addEventListener("click", () => {
-  //     currentActive++;
-  //     console.log("currentActive" + currentActive);
+  //     //currentActive++;
+  //     //console.log("currentActive" + currentActive);
 
-  //     if (currentActive > circles.length) {
-  //       currentActive = circles.length;
+  //     // if (currentActive > circles.length) {
+  //     //   currentActive = circles.length;
+  //     // }
+  //     if (questionId > circles.length) {
+  //       questionId = circles.length;
   //     }
 
   //     update();
@@ -26,7 +36,7 @@ function ProgressBar({ questionId }) {
 
   // if (prev) {
   //   prev.addEventListener("click", () => {
-  //     currentActive--;
+  //    // currentActive--;
 
   //     if (currentActive < 1) {
   //       currentActive = 1;
@@ -38,7 +48,7 @@ function ProgressBar({ questionId }) {
 
   function update() {
     circles.forEach((circle, idx) => {
-      if (idx < currentActive) {
+      if (++idx < currentActive) {
         circle.classList.add("active");
       } else {
         circle.classList.remove("active");
@@ -65,15 +75,15 @@ function ProgressBar({ questionId }) {
             {" "}
           </div>
 
-          <div className={questionId === 1 ? "circle active" : "circle"}>1</div>
+          {/* <div className={questionId === 1 ? "circle active" : "circle"}>1</div>
           <div className={questionId === 2 ? "circle active" : "circle"}>2</div>
           <div className={questionId === 3 ? "circle active" : "circle"}>3</div>
-          <div className={questionId === 4 ? "circle active" : "circle"}>4</div>
+          <div className={questionId === 4 ? "circle active" : "circle"}>4</div> */}
 
-          {/* <div className="circle active">1</div>
+          <div className="circle active">1</div>
           <div className="circle">2</div>
           <div className="circle">3</div>
-          <div className="circle">4</div> */}
+          <div className="circle">4</div>
         </div>
       </div>
     </div>

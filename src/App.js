@@ -4,6 +4,9 @@ import { useState } from "react";
 import Thankyou from "./components/Thankyou";
 import Question from "./components/Question";
 import ProgressBar from "./components/ProgressBar";
+import Modal from "./components/Modal";
+import QuizLogo from "./assets/quiz-logo.png";
+import Quiz from "./components/Quiz";
 
 function App() {
   const [questionId, setQuestionId] = useState(0);
@@ -52,59 +55,15 @@ function App() {
 
   return (
     <div className="App">
-      {questionId > 0 && <ProgressBar questionId={questionId} />}
-      {questionId > 0 && questionId <= questionList.length && (
-        <Question
-          _questionId={questionId}
-          _questionList={questionList}
-          setQuetsionList={setQuestionList}
-        />
-      )}
-
-      {questionId == 0 && (
-        <button
-          className="btn"
-          onClick={(e) => {
-            setQuestionId(questionId + 1);
-
-            //make btn name as - Next
-          }}
-        >
-          Begin
-        </button>
-      )}
-
-      {questionId > 0 && questionId <= questionList.length && (
-        <div>
-          <button
-            className="btn"
-            id="prev"
-            style={{ color: "red" }}
-            onClick={(e) => {
-              setQuestionId(questionId - 1);
-
-              //make btn name as - Next
-            }}
-          >
-            Previous
-          </button>
-          <button
-            className="btn"
-            id="next"
-            style={{ color: "red" }}
-            onClick={(e) => {
-              setQuestionId(questionId + 1);
-
-              //make btn name as - Next
-            }}
-          >
-            Next
-          </button>
-        </div>
-      )}
-      {questionId === questionList.length + 1 && (
-        <Thankyou questionList={questionList} />
-      )}
+      <img src={QuizLogo}></img>
+      <Modal>
+        {/* <Quiz
+          questionId={questionId}
+          setQuestionId={setQuestionId}
+          questionList={questionList}
+          setQuestionList={setQuestionList}
+        /> */}
+      </Modal>
     </div>
   );
 }
