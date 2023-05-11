@@ -2,8 +2,13 @@ import React from "react";
 import ProgressBar from "./ProgressBar";
 import Question from "./Question";
 import Thankyou from "./Thankyou";
+import { useContext } from "react";
+import QuizContext from "./context/QuizContext";
 
-function Quiz({ questionId, setQuestionId, questionList, setQuestionList }) {
+function Quiz() {
+  const { questionId, setQuestionId, questionList, setQuestionList } =
+    useContext(QuizContext);
+
   return (
     <div>
       {questionId > 0 && <ProgressBar questionId={questionId} />}
