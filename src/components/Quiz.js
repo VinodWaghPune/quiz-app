@@ -4,13 +4,14 @@ import Question from "./Question";
 import Thankyou from "./Thankyou";
 import { useContext } from "react";
 import QuizContext from "./context/QuizContext";
+import quizImg from "../assets/quizimg.png";
 
 function Quiz() {
   const { questionId, setQuestionId, questionList, setQuestionList } =
     useContext(QuizContext);
 
   return (
-    <div>
+    <div className="`mt-3 h-[600px] w-full  rounded-t-lg flex flex-col items-center justify-center px-5 bg-[url('https://cdn-apps.drimify.com/upload/media/1/4/0001/01/background-57ce7f232d927_1653923457.png')] bg-cover bg-center`">
       {questionId > 0 && <ProgressBar questionId={questionId} />}
       {questionId > 0 && questionId <= questionList.length && (
         <Question
