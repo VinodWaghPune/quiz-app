@@ -3,7 +3,7 @@ import "./App.css";
 import { useState, useContext } from "react";
 import Thankyou from "./components/Thankyou";
 import Question from "./components/Question";
-import ProgressBar from "./components/ProgressBar";
+
 import Modal from "./components/Modal";
 import QuizLogo from "./assets/quiz-logo.png";
 import backgroundImg from "./assets/backgroundImg.png";
@@ -24,7 +24,7 @@ function App() {
         </p>
         {showQuiz && <Modal showQuiz={showQuiz} />}
         <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-8 px-[85px] rounded-full text-xl"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-8 px-[85px] rounded-full text-xl"
           onClick={() => setShowQuiz(true)}
         >
           Try the demo

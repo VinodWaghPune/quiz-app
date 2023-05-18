@@ -1,29 +1,34 @@
 import React from "react";
-import ProgressBar from "./ProgressBar";
+
 import Question from "./Question";
 import Thankyou from "./Thankyou";
 import { useContext } from "react";
 import QuizContext from "./context/QuizContext";
 import quizImg from "../assets/quizimg.png";
+import Progressbar from "./Progressbar";
+import MultiStepProgressBar from "./MultiStepProgressBar/MultiStepProgressBar";
 
 function Quiz() {
   const { questionId, setQuestionId, questionList, setQuestionList } =
     useContext(QuizContext);
+  console.log(" questionId is " + questionId);
 
   return (
-    <div className="`mt-3 h-[600px] w-full  rounded-t-lg flex flex-col items-center justify-center px-5 bg-[url('https://cdn-apps.drimify.com/upload/media/1/4/0001/01/background-57ce7f232d927_1653923457.png')] bg-cover bg-center`">
-      {questionId > 0 && <ProgressBar questionId={questionId} />}
-      {questionId > 0 && questionId <= questionList.length && (
-        <Question
-          _questionId={questionId}
-          _questionList={questionList}
-          setQuetsionList={setQuestionList}
+    <div className="`mt-3 h-[600px] w-full  rounded-t-lg flex flex-col items-start justify-center px-5 bg-[url('https://cdn-apps.drimify.com/upload/media/1/4/0001/01/background-57ce7f232d927_1653923457.png')] bg-cover bg-center`">
+      {questionId >= 0 && questionId < questionList.length && (
+        <MultiStepProgressBar
+          page={questionId + 1}
+          onPageNumberClick="pagetwo"
+          className="mb-8"
         />
       )}
+      {questionId >= 0 && questionId < questionList.length && (
+        <Question className="mt-8" />
+      )}
 
-      {questionId == 0 && (
+      {questionId === -1 && (
         <button
-          className="btn bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          className="btn bg-yellow-500 hover:bg-green-700 text-white font-bold py-4 px-4 rounded"
           onClick={(e) => {
             setQuestionId(questionId + 1);
 
@@ -34,10 +39,10 @@ function Quiz() {
         </button>
       )}
 
-      {questionId > 0 && questionId <= questionList.length && (
+      {questionId >= 0 && questionId < questionList.length && (
         <div>
           <button
-            className="btn"
+            className="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded btn mt-8"
             id="prev"
             style={{ color: "red" }}
             onClick={(e) => {
@@ -49,7 +54,7 @@ function Quiz() {
             Previous
           </button>
           <button
-            className="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded btn"
+            className="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded btn ml-5"
             id="next"
             style={{ color: "red" }}
             onClick={(e) => {
@@ -58,13 +63,11 @@ function Quiz() {
               //make btn name as - Next
             }}
           >
-            Next
+            {questionId === 3 ? "Submit" : "Next"}
           </button>
         </div>
       )}
-      {questionId === questionList.length + 1 && (
-        <Thankyou questionList={questionList} />
-      )}
+      {questionId === questionList.length && <Thankyou />}
     </div>
   );
 }

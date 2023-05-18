@@ -1,67 +1,86 @@
 import React from "react";
-import { useState } from "react";
 
-function Question({ _questionId, _questionList, setQuestionList }) {
-  const [questionId, setQuestionId] = useState();
+import { useContext } from "react";
+import QuizContext from "./context/QuizContext";
+
+function Question() {
+  const { questionId, setQuestionId, questionList, setQuestionList } =
+    useContext(QuizContext);
 
   //console.log(props);
 
   //let temp_questionList = [..._questionList];
   // setQuestionId(_questionId);
-  const filterList = _questionList.filter((quetsion) => {
-    return quetsion.id === _questionId;
-  });
+  // const filterList = _questionList.filter((quetsion) => {
+  //   return quetsion.id === _questionId;
+  // });
   // console.log("filter list " + filterList[0].question);
   // console.log("Un filter list " + _questionList[0].question);
 
-  const handleChange = (event) => {
-    const temp = [..._questionList];
-    temp[_questionId - 1].user_answer = event.target.value;
+  const handleChange = (value) => {
+    const temp = [...questionList];
+    temp[questionId].user_answer = value;
     //setQuestionList(temp);
-    console.log(_questionList);
+    console.log("value is " + value);
   };
   return (
-    <div>
-      <h1>Question - {filterList[0].id}</h1>
-      <h2>{filterList[0].question}</h2>
+    <div className="flex flex-col items-start justify-center ">
+      <h1 className="text-white text-xl mb-8">
+        Question - {questionList[questionId].id}
+      </h1>
+      <h2 className="text-white text-xl mb-8">
+        {questionList[questionId].question}
+      </h2>
 
-      <div
-        style={{
-          direction: "flex",
-          flexDirection: "column",
-          color: "blue",
-        }}
-      >
-        <input
-          type="radio"
-          value={filterList[0].option1}
-          name="options"
-          onChange={handleChange}
-        />
-        {filterList[0].option1}
-        <input
-          type="radio"
-          value={filterList[0].option2}
-          name="options"
-          onChange={handleChange}
-        />
-        {filterList[0].option2}
+      <div className="flex flex-col items-start justify-start ">
+        <div className="flex flex-row">
+          <input
+            type="radio"
+            value={questionList[questionId].option1}
+            name="options"
+            onChange={(e) => handleChange(e.target.value)}
+          />
+          <label className="text-white text-xl ml-4">
+            {questionList[questionId].option1}
+          </label>
+        </div>
 
-        <input
-          type="radio"
-          value={filterList[0].option3}
-          name="options"
-          onChange={handleChange}
-        />
-        {filterList[0].option3}
+        <div className="flex flex-row">
+          <input
+            type="radio"
+            value={questionList[questionId].option2}
+            name="options"
+            onChange={(e) => handleChange(e.target.value)}
+          />
 
-        <input
-          type="radio"
-          value={filterList[0].option4}
-          name="options"
-          onChange={handleChange}
-        />
-        {filterList[0].option4}
+          <label className="text-white text-xl ml-4">
+            {questionList[questionId].option2}
+          </label>
+        </div>
+
+        <div className="flex flex-row">
+          <input
+            type="radio"
+            value={questionList[questionId].option3}
+            name="options"
+            onChange={(e) => handleChange(e.target.value)}
+          />
+          <label className="text-white text-xl ml-4">
+            {questionList[questionId].option3}
+          </label>
+        </div>
+
+        <div className="flex flex-row">
+          <input
+            type="radio"
+            value={questionList[questionId].option4}
+            name="options"
+            onChange={(e) => handleChange(e.target.value)}
+          />
+          <label className="text-white text-xl ml-4">
+            {questionList[questionId].option4}
+          </label>
+        </div>
       </div>
     </div>
   );

@@ -3,8 +3,8 @@ import { createContext, useState } from "react";
 const QuizContext = createContext();
 
 export const QuizContextProvider = ({ children }) => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(-1);
-  const [questionId, setQuestionId] = useState(0);
+  //const [currentQuestionIndex, setCurrentQuestionIndex] = useState(-1);
+  const [questionId, setQuestionId] = useState(-1);
   const [questionList, setQuestionList] = useState([
     {
       question: "What is the popular morning beverage?",
@@ -55,8 +55,6 @@ export const QuizContextProvider = ({ children }) => {
         setQuestionId,
         questionList,
         setQuestionList,
-        currentQuestionIndex,
-        setCurrentQuestionIndex,
       }}
     >
       {children}

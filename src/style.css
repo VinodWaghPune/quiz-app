@@ -99,3 +99,11 @@ body {
   background-color: var(--line-border-empty);
   cursor: not-allowed;
 }
+
+.transitionStep {
+  filter: grayscale(1);
+}
+
+.transitionStep.accomplished {
+  filter: grayscale(0);
+}
