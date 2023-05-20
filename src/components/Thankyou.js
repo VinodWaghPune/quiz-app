@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import QuizContext from "./context/QuizContext";
 import Congrats from "../assets/congrats.gif";
+import ShowAnswer from "./ShowAnswer";
 
 function Thankyou() {
   const { questionId, setQuestionId, questionList } = useContext(QuizContext);
+  const [showAns, setShowAns] = useState(false);
   let correctAns = 0;
   return (
     <div className="flex flex-col items-center justify-center">
       <h1 className="text-white text-3xl text-bold">Congratulations!</h1>
       <img src={Congrats} alt="congartsMessage"></img>
-      {console.log(questionList)}
+
       {questionList.forEach((item, key) => {
         if (item.user_answer === item.correct_answer) {
           correctAns++;
-          console.log(correctAns);
         }
       })}
       <h2 className="text-white text-3xl text-bold">
@@ -27,10 +28,20 @@ function Thankyou() {
         >
           Restart
         </button>
-        <button className="btn bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-20">
+        <button
+          className="btn bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-20"
+          onClick={(e) => {
+            if (showAns) {
+              setShowAns(false);
+            } else {
+              setShowAns(true);
+            }
+          }}
+        >
           Show Answers
         </button>
       </div>
+      {showAns && <ShowAnswer />}
     </div>
   );
 }

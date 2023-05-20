@@ -11,7 +11,7 @@ import MultiStepProgressBar from "./MultiStepProgressBar/MultiStepProgressBar";
 function Quiz() {
   const { questionId, setQuestionId, questionList, setQuestionList } =
     useContext(QuizContext);
-  console.log(" questionId is " + questionId);
+  //console.log(" questionId is " + questionId);
 
   return (
     <div className="`mt-3 h-[600px] w-full  rounded-t-lg flex flex-col items-start justify-center px-5 bg-[url('https://cdn-apps.drimify.com/upload/media/1/4/0001/01/background-57ce7f232d927_1653923457.png')] bg-cover bg-center`">

@@ -21,7 +21,6 @@ function Question() {
     const temp = [...questionList];
     temp[questionId].user_answer = value;
     //setQuestionList(temp);
-    console.log("value is " + value);
   };
   return (
     <div className="flex flex-col items-start justify-center ">
