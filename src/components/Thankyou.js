@@ -9,7 +9,7 @@ function Thankyou() {
   const [showAns, setShowAns] = useState(false);
   let correctAns = 0;
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center overflowy-auto">
       <h1 className="text-white text-3xl text-bold">Congratulations!</h1>
       <img src={Congrats} alt="congartsMessage"></img>
 
@@ -23,7 +23,7 @@ function Thankyou() {
       </h2>
       <div className="flex flex-row justify-end mt-10">
         <button
-          className="btn bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          className="opacity-20 hover:opacity-30 btn bg-white  text-white font-bold py-2 px-4 rounded"
           onClick={(e) => setQuestionId(-1)}
         >
           Restart
