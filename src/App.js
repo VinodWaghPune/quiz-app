@@ -9,27 +9,47 @@ import QuizLogo from "./assets/quiz-logo.png";
 import backgroundImg from "./assets/backgroundImg.png";
 import Quiz from "./components/Quiz";
 import QuizContext from "./components/context/QuizContext";
+import axios from "axios";
 
 import { QuizContextProvider } from "./components/context/QuizContext";
+import Home from "./pages/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import QuestionEntry from "./pages/QuestionEntry";
 
 function App() {
   const [showQuiz, setShowQuiz] = useState(false);
+  const [counter, setCounter] = useState(0);
+
+  // const getUser = () => {
+  //   axios.get("http://localhost:8000/getquestionlist").then((res) => {
+  //     console.log("get questions" + res);
+  //   });
+  // };
+
+  // const createUser = () => {
+  //   setCounter(counter + 1);
+  //   console.log("click creater user " + counter);
+
+  //   axios
+  //     .post(`http://localhost:8000/create_user`, {
+  //       name: "name" + counter,
+  //       email: "email" + counter,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     });
+  // };
 
   return (
     <QuizContextProvider>
-      <div className="App">
-        <img src={QuizLogo} className="h-6300px]"></img>
-        <p className="text-gray-700 text-xl font-bold text-center mb-2">
-          Interactive Quiz
-        </p>
-        {showQuiz && <Modal showQuiz={showQuiz} />}
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-8 px-[85px] rounded-full text-xl"
-          onClick={() => setShowQuiz(true)}
-        >
-          Try the demo
-        </button>
-      </div>
+      <Router>
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/QuestionEntry" element={<QuestionEntry />} />
+          </Routes>
+        </div>
+      </Router>
     </QuizContextProvider>
   );
 }

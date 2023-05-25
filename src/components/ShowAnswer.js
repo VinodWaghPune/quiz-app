@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import QuizContext from "./context/QuizContext";
+import axios from "axios";
 
 function ShowAnswer() {
   const { questionList } = useContext(QuizContext);
@@ -25,9 +26,7 @@ function ShowAnswer() {
             <td>4</td>
           </tr>
 
-          {questionList.map((element) => {
-            console.log(element);
-
+          {questionList.map((element) => (
             <tr>
               <td className="text-white">1{element.question}</td>
               <td>2{element.user_answer}</td>
@@ -38,8 +37,8 @@ function ShowAnswer() {
                   ? "correct"
                   : "incorrect"}
               </td>
-            </tr>;
-          })}
+            </tr>
+          ))}
         </tbody>
       </table>
       {questionList.forEach((element) => {
