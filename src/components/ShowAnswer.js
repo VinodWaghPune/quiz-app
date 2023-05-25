@@ -9,7 +9,7 @@ function ShowAnswer() {
 
   return (
     <div>
-      <table className="table-auto text-white bottom-3">
+      <table className="table-auto text-white bottom-3 border border-solid border-gray-200">
         <thead>
           <tr>
             <th>Question</th>
@@ -28,15 +28,16 @@ function ShowAnswer() {
 
           {questionList.map((element) => (
             <tr>
-              <td className="text-white">1{element.question}</td>
-              <td>2{element.user_answer}</td>
-              <td>3{element.correct_answer}</td>
+              <td className="text-white">{element.question}</td>
+              <td>{element.user_answer}</td>
+              <td>{element.correct_answer}</td>
               <td>
-                4
                 {element.user_answer === element.correct_answer
                   ? "correct"
                   : "incorrect"}
               </td>
+            </tr>
+          ))}
             </tr>
           ))}
         </tbody>

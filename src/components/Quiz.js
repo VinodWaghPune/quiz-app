@@ -5,7 +5,6 @@ import Thankyou from "./Thankyou";
 import { useContext } from "react";
 import QuizContext from "./context/QuizContext";
 import quizImg from "../assets/quizimg.png";
-import Progressbar from "./Progressbar";
 import MultiStepProgressBar from "./MultiStepProgressBar/MultiStepProgressBar";
 
 function Quiz() {
@@ -14,7 +13,11 @@ function Quiz() {
   //console.log(" questionId is " + questionId);
 
   return (
-    <div className="`mt-3 h-[600px] w-full  rounded-t-lg flex flex-col items-start justify-center px-5 bg-[url('https://cdn-apps.drimify.com/upload/media/1/4/0001/01/background-57ce7f232d927_1653923457.png')] bg-cover bg-center`">
+    <div
+      className={`mt-3 h-[600px] w-full  rounded-t-lg flex flex-col items-center ${
+        questionId === -1 ? "justify-end" : "justify-around"
+      } px-5 bg-[url('https://cdn-apps.drimify.com/upload/media/1/4/0001/01/background-57ce7f232d927_1653923457.png')] bg-cover bg-center overflow-y-auto`}
+    >
       {questionId >= 0 && questionId < questionList.length && (
         <MultiStepProgressBar
           page={questionId + 1}
