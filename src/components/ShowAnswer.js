@@ -38,8 +38,6 @@ function ShowAnswer() {
               </td>
             </tr>
           ))}
-            </tr>
-          ))}
         </tbody>
       </table>
       {questionList.forEach((element) => {

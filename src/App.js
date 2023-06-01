@@ -12,7 +12,7 @@ import QuizContext from "./components/context/QuizContext";
 import axios from "axios";
 
 import { QuizContextProvider } from "./components/context/QuizContext";
-import Home from "./pages/Home";
+import Home from "./components/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import QuestionEntry from "./pages/QuestionEntry";
 
